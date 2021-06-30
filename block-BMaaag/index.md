@@ -22,5 +22,7 @@ var multiple = [
 use mountains
 db.createCollection("himalayas")
 db.himalayas.insert({name: 'Dhauldhar range', height: '4000 mtrs'})
-
+db.himalayas.insertMany(multiple)
+db.himalayas.find({name:"Dhauldhar range"})
+db.himalayas.findOne({name:"Dhauldhar range"})
 ```
