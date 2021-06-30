@@ -60,7 +60,7 @@ Write code to execute below expressions.
    db.article.find({})
 
 5. Find a document using \_id field.
-   db.article.find({"\_id" : ObjectId("60dc5b34d55625e975726d53")})
+   db.article.findOne({"\_id" : ObjectId("60dc5b34d55625e975726d53")})
 
 6. 1. Find documents using title
       db.article.find({title: 'hound of baskerville'})
@@ -73,7 +73,7 @@ Write code to execute below expressions.
 10. Update a author's name using article's title.
     db.article.update({"title":"samurai"},{$set:{"author.name":"narendra"}})
 11. rename details field to description from all articles in articles collection.
-    db.article.updateMany( {}, { $rename: { "details": "description" } } )
+    db.article.updateMany( {}, { $rename: { "details": "description" },{multi:true} } )
 12. Add additional tag in a specific document.
     db.article.update( {title:"samurai"}, {$push:{tags:"nextjs"}})
 
@@ -86,7 +86,7 @@ db.article.update({"title":"samurai"},{$set:{"author.name":"narendra"}})
 
 13. find an article using title and increment it's auhtor's age by 5.
     db.article.update( {title:"hound of baskerville"},
-    {$set:{"author.age":author.age+5}} )
+    {$inc:{"author.age":5}} )
 14. Delete a document using \_id field with `db.COLLECTION_NAME.remove()`.
     db.article.remove({"\_id" : ObjectId("60dc9989d55625e975726d56")})
     // Sample data
@@ -206,11 +206,11 @@ db.users.insertMany([
 Insert above data into database to perform below queries:-
 
 - Find all males who play cricket.
-  db.users.find({sports:{$all:['cricket']}})
+  db.users.find({gender:"Male",sports:'cricket'})
 
 - Update user with extra golf field in sports array whose name is "Steve Ortega".
   db.users.update({name:"Steve Ortega"},{$push:{sports:"golf"}})
 - Find all users who play either 'football' or 'cricket'.
   db.users.find({sports:{$in:['football','cricket']}})
 - Find all users whose name includes 'ri' in their name.
-db.users.find({name:{$elemMatch:{$exists:'ri'}}})
+  db.users.find({name:/ri/i})
