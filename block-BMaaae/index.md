@@ -12,11 +12,13 @@ Write code to:-
 
 - add multiple players in those collections which should have fields like `name`, `age` and `email` and `bid_price`.
 
-db.userData.insert(group)
+db.userData.insertMany(group)
 
 - list all collections in sports database.
   show collections
 - rename `TT` collection to `tennis`.
+  db.TT.renameCollection("tennis")
+
 - create a capped collection called `khokho` which should have max 3 documents.
   db.createCollection("khokho", { capped : true, size : 1024, max : 3 } )
 
