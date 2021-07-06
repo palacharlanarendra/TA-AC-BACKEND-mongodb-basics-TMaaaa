@@ -23,7 +23,7 @@ db.temperature.insert({"status":"good"})
 db.temperature.insert({"response":"ok"})
 
 - create a simple collection named `humidity`
-  db.createCollection("temperature")
+  db.createCollection("humidity")
 - check whether `temperature` collection is capped or not ?
   db.temperature.isCapped()
 - Delete `humidity` collection and then the entire database(weather).
